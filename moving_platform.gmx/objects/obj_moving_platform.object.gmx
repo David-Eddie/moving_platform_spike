@@ -49,7 +49,15 @@ prev_y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// check if player is riding the platform
+            <string>// fix platform and player to screen coordinates to reduce rounding errors
+if ((x mod 1) &gt; 0.5) x = ceil(x); else x = floor(x);
+if ((y mod 1) &gt; 0.5) y = ceil(y); else y = floor(y);
+with(obj_player) {
+    if ((x mod 1) &gt; 0.5) x = ceil(x); else x = floor(x);
+    if ((y mod 1) &gt; 0.5) y = ceil(y); else y = floor(y);
+}
+
+// check if player is riding the platform
 var passenger = noone;
 
 // position vector locating passenger relative to platform x,y
